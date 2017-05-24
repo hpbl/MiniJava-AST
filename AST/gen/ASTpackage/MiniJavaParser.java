@@ -1,4 +1,4 @@
-// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/AST/src/ASTpackage/MiniJava.g4 by ANTLR 4.7
+// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/AST/src/ASTpackage/MiniJava.g4 by ANTLR 4.7
 package ASTpackage;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
