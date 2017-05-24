@@ -59,7 +59,7 @@ identifier: IDENTIFIER;
 
 
 
-// Missing rules - lexer
+// Missing lexer rules
 
 INTEGER_LITERAL:    [0-9]+;
 IDENTIFIER:         [a-zA-Z]+;
