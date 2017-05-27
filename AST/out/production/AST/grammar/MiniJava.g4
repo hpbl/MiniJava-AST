@@ -30,9 +30,10 @@ type:       'int' '[' ']'
 
 
 
-statement:  '{' ( statement )* '}'
+statement returns [Statement stmt]:
+         '{' ( statement )* '}'
          |  'if' '(' expression ')' statement 'else' statement
-         |  'while' '(' expression ')' statement
+         |  'while' '(' exp=expression ')' blck=statement                {$stmt = new While($exp, $blck)}
          |  'System.out.println' '(' expression ')' ';'
          |  identifier '=' expression ';'
          |  identifier '[' expression ']' '=' expression ';'

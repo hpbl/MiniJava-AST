@@ -20,6 +20,10 @@ public class Test {
         MiniJavaParser parser = new MiniJavaParser(token);
         parser.goal();
 
+        //Objeto ANTLR
+
+        // Program p = parser.goal();
+
 
     }
 }
