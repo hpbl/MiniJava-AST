@@ -8,7 +8,10 @@ import ast.*;
 goal returns [Program programa]:
             mc1=mainClass ( cd1=classDeclaration )* EOF
                 {ClassDeclList cdl1 = new ClassDeclList();
-                cdl1.addElement($cd1.declClasse);
+
+                if ($cd1.ctx != null) {
+                    cdl1.addElement($cd1.declClasse);
+                }
 
                 $programa = new Program($mc1.classeMain, cdl1);
                 }
@@ -30,7 +33,10 @@ classDeclaration returns [ClassDecl declClasse]:
                 {Identifier idtf1 = new Identifier($id1.ctx.getText());
 
                 VarDeclList vl1 = new VarDeclList();
-                vl1.addElement($vd1.declVariavel);
+
+                if ($vd1.ctx != null) {
+                    vl1.addElement($vd1.declVariavel);
+                }
 
                 MethodDeclList ml1 = new MethodDeclList();
                 ml1.addElement($md1.declMetodo);
@@ -63,7 +69,7 @@ methodDeclaration returns [MethodDecl declMetodo]:
                 Formal f1 = new Formal($tp2.tipo, idtf2);
                 fl1.addElement(f1);
 
-                if ($tp3.tipo != null) {
+                if ($tp3.ctx != null) {
                     Identifier idtf3 = new Identifier($id3.ctx.getText());
                     Formal f2 = new Formal($tp3.tipo, idtf3);
                     fl1.addElement(f2);
@@ -149,8 +155,15 @@ expression returns [Exp expressao]:
 
           | e1=expression '.' id=identifier '(' ( e2=expression ( ',' e3=expression )* )? ')'
                 {ExpList expList = new ExpList();
-                 expList.addElement(((ExpressionContext)_localctx).e2.expressao);
-                 expList.addElement(((ExpressionContext)_localctx).e3.expressao);
+
+                if ($e2.ctx != null) {
+                    expList.addElement(((ExpressionContext)_localctx).e2.expressao);
+
+                    if ($e3.ctx != null) {
+                        expList.addElement(((ExpressionContext)_localctx).e3.expressao);
+                    }
+                }
+
 
                  Identifier idtf = new Identifier($id.ctx.getText());
 
@@ -172,7 +185,7 @@ expression returns [Exp expressao]:
                 {$expressao = new This();}
 
           | 'new' 'int' '[' exp=expression ']'
-                {$expressao = new ArrayLength($exp.expressao);}
+                {$expressao = new NewArray($exp.expressao);}
 
           | 'new' id=identifier '(' ')'
                 {$expressao = new NewObject(new Identifier($id.ctx.getText()));}
@@ -181,7 +194,9 @@ expression returns [Exp expressao]:
                 {$expressao = new Not($exp.expressao);}
 
           | '(' exp=expression ')'
-                {/* descobrir o que é isso */}
+                {/* descobrir o que é isso */
+                $expressao = $exp.expressao;
+                }
           ;
 
 

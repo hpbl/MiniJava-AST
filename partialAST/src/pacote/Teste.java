@@ -7,6 +7,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import ast.*;
+import visitor.*;
+
 /**
  * Created by Pintor on 26/05/17.
  */
@@ -19,7 +22,11 @@ public class Teste {
         gramLexer lexer = new gramLexer(input);
         CommonTokenStream token = new CommonTokenStream(lexer);
         gramParser parser = new gramParser(token);
-        System.out.print(parser.expression().expressao);
+
+        Program prog = parser.goal().programa;
+
+        prog.accept(new PrettyPrintVisitor());
+
     }
 
 }

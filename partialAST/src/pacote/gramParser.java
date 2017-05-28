@@ -156,7 +156,10 @@ public class gramParser extends Parser {
 			setState(25);
 			match(EOF);
 			ClassDeclList cdl1 = new ClassDeclList();
-			                cdl1.addElement(((GoalContext)_localctx).cd1.declClasse);
+
+			                if (((GoalContext)_localctx).cd1 != null) {
+			                    cdl1.addElement(((GoalContext)_localctx).cd1.declClasse);
+			                }
 
 			                ((GoalContext)_localctx).programa =  new Program(((GoalContext)_localctx).mc1.classeMain, cdl1);
 			                
@@ -365,7 +368,10 @@ public class gramParser extends Parser {
 			Identifier idtf1 = new Identifier(((ClassDeclarationContext)_localctx).id1.getText());
 
 			                VarDeclList vl1 = new VarDeclList();
-			                vl1.addElement(((ClassDeclarationContext)_localctx).vd1.declVariavel);
+
+			                if (((ClassDeclarationContext)_localctx).vd1 != null) {
+			                    vl1.addElement(((ClassDeclarationContext)_localctx).vd1.declVariavel);
+			                }
 
 			                MethodDeclList ml1 = new MethodDeclList();
 			                ml1.addElement(((ClassDeclarationContext)_localctx).md1.declMetodo);
@@ -600,7 +606,7 @@ public class gramParser extends Parser {
 			                Formal f1 = new Formal(((MethodDeclarationContext)_localctx).tp2.tipo, idtf2);
 			                fl1.addElement(f1);
 
-			                if (((MethodDeclarationContext)_localctx).tp3.tipo != null) {
+			                if (((MethodDeclarationContext)_localctx).tp3 != null) {
 			                    Identifier idtf3 = new Identifier(((MethodDeclarationContext)_localctx).id3.getText());
 			                    Formal f2 = new Formal(((MethodDeclarationContext)_localctx).tp3.tipo, idtf3);
 			                    fl1.addElement(f2);
@@ -991,7 +997,7 @@ public class gramParser extends Parser {
 				((ExpressionContext)_localctx).exp = expression(0);
 				setState(189);
 				match(T__9);
-				((ExpressionContext)_localctx).expressao =  new ArrayLength(((ExpressionContext)_localctx).exp.expressao);
+				((ExpressionContext)_localctx).expressao =  new NewArray(((ExpressionContext)_localctx).exp.expressao);
 				}
 				break;
 			case 7:
@@ -1025,6 +1031,8 @@ public class gramParser extends Parser {
 				setState(204);
 				match(T__10);
 				/* descobrir o que é isso */
+				                ((ExpressionContext)_localctx).expressao =  ((ExpressionContext)_localctx).exp.expressao;
+				                
 				}
 				break;
 			}
@@ -1156,8 +1164,15 @@ public class gramParser extends Parser {
 						setState(238);
 						match(T__10);
 						ExpList expList = new ExpList();
-						                           expList.addElement(((ExpressionContext)_localctx).e2.expressao);
-						                           expList.addElement(((ExpressionContext)_localctx).e3.expressao);
+
+						                          if (((ExpressionContext)_localctx).e2 != null) {
+						                              expList.addElement(((ExpressionContext)_localctx).e2.expressao);
+
+						                              if (((ExpressionContext)_localctx).e3 != null) {
+						                                  expList.addElement(((ExpressionContext)_localctx).e3.expressao);
+						                              }
+						                          }
+
 
 						                           Identifier idtf = new Identifier(((ExpressionContext)_localctx).id.getText());
 

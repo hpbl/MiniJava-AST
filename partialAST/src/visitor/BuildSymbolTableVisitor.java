@@ -1,8 +1,8 @@
 package visitor;
 
 import symboltable.SymbolTable;
-import symboltable.Class;
 import symboltable.Method;
+import symboltable.Class;
 import symboltable.Variable;
 import ast.And;
 import ast.ArrayAssign;
