@@ -6,15 +6,14 @@ import ast.*;
 
 
 goal returns [Program programa]:
-            mc1=mainClass ( cd1=classDeclaration )* EOF
-                {ClassDeclList cdl1 = new ClassDeclList();
+                {ClassDeclList cdl1 = new ClassDeclList();}
+            mc1=mainClass ( cd1=classDeclaration {
+                            if ($cd1.ctx != null) {
+                                cdl1.addElement($cd1.declClasse);
+                            }}
+                            )* EOF
 
-                if ($cd1.ctx != null) {
-                    cdl1.addElement($cd1.declClasse);
-                }
-
-                $programa = new Program($mc1.classeMain, cdl1);
-                }
+                {$programa = new Program($mc1.classeMain, cdl1);}
             ;
 
 
@@ -29,17 +28,19 @@ mainClass returns [MainClass classeMain]:
 
 
 classDeclaration returns [ClassDecl declClasse]:
-            'class' id1=identifier ( 'extends' id2=identifier )? '{' ( vd1=varDeclaration )* ( md1=methodDeclaration )* '}'
+                {VarDeclList vl1 = new VarDeclList();
+                MethodDeclList ml1 = new MethodDeclList();}
+            'class' id1=identifier ( 'extends' id2=identifier )? '{' ( vd1=varDeclaration {
+                                                                                           if ($vd1.ctx != null) {
+                                                                                            vl1.addElement($vd1.declVariavel);
+                                                                                           }
+                                                                                           } )* ( md1=methodDeclaration {
+                                                                                                           if ($md1.ctx != null) {
+                                                                                                               ml1.addElement($md1.declMetodo);
+                                                                                                           }
+                                                                                           } )* '}'
                 {Identifier idtf1 = new Identifier($id1.ctx.getText());
 
-                VarDeclList vl1 = new VarDeclList();
-
-                if ($vd1.ctx != null) {
-                    vl1.addElement($vd1.declVariavel);
-                }
-
-                MethodDeclList ml1 = new MethodDeclList();
-                ml1.addElement($md1.declMetodo);
 
                 if ($id2.ctx != null) {
                     Identifier idtf2 = new Identifier($id2.ctx.getText());
@@ -61,25 +62,30 @@ varDeclaration returns [VarDecl declVariavel]:
 
 
 methodDeclaration returns [MethodDecl declMetodo]:
-            'public' tp1=type id1=identifier '(' ( tp2=type id2=identifier ( ',' tp3=type id3=identifier )* )? ')' '{' ( vd1=varDeclaration )* ( st1=statement )* 'return' e1=expression ';' '}'
-                {Identifier idtf1 = new Identifier($id1.ctx.getText());
-
-                FormalList fl1 = new FormalList();
-                Identifier idtf2 = new Identifier($id2.ctx.getText());
-                Formal f1 = new Formal($tp2.tipo, idtf2);
-                fl1.addElement(f1);
-
-                if ($tp3.ctx != null) {
-                    Identifier idtf3 = new Identifier($id3.ctx.getText());
-                    Formal f2 = new Formal($tp3.tipo, idtf3);
-                    fl1.addElement(f2);
-                }
-
+                {FormalList fl1 = new FormalList();
                 VarDeclList vl1 = new VarDeclList();
-                vl1.addElement($vd1.declVariavel);
-
-                StatementList sl1 = new StatementList();
-                sl1.addElement($st1.declaracao);
+                StatementList sl1 = new StatementList();}
+            'public' tp1=type id1=identifier '(' ( tp2=type id2=identifier {
+                                                                            if ($id2.ctx != null) {
+                                                                                Identifier idtf2 = new Identifier($id2.ctx.getText());
+                                                                                Formal f1 = new Formal($tp2.tipo, idtf2);
+                                                                                fl1.addElement(f1);
+                                                                                }
+                                                                            }
+                                                                            ( ',' tp3=type id3=identifier {
+                                                                                if ($id2.ctx != null) {
+                                                                                    Identifier idtf2 = new Identifier($id2.ctx.getText());
+                                                                                    Formal f1 = new Formal($tp2.tipo, idtf2);
+                                                                                    fl1.addElement(f1);
+                                                                                }
+                                                                            })* )? ')' '{' ( vd1=varDeclaration {
+                                                                                                vl1.addElement($vd1.declVariavel);
+                                                                                            })*
+                                                                                             ( st1=statement {
+                                                                                                sl1.addElement($st1.declaracao);
+                                                                                             })*
+                                                                                              'return' e1=expression ';' '}'
+                {Identifier idtf1 = new Identifier($id1.ctx.getText());
 
                 $declMetodo = new MethodDecl($tp1.tipo, idtf1, fl1, vl1, sl1, $e1.expressao);
                 }
@@ -102,10 +108,9 @@ type returns [Type tipo]:
 
 
 statement returns [Statement declaracao]:
-            '{' ( stmt=statement )* '}'
-                {StatementList list = new StatementList();
-                list.addElement($stmt.declaracao);
-                $declaracao = new Block(list);}
+                {StatementList list = new StatementList();}
+            '{' ( stmt=statement {list.addElement($stmt.declaracao);} )* '}'
+                {$declaracao = new Block(list);}
 
          |  'if' '(' exp=expression ')' s1=statement 'else' s2=statement
                 {$declaracao = new If($exp.expressao, $s1.declaracao, $s2.declaracao);}
@@ -144,7 +149,6 @@ expression returns [Exp expressao]:
                     case "*":   $expressao = new Times($e1.expressao, $e2.expressao);
                                 break;
                 }
-
                 }
 
           | e1=expression '[' e2=expression ']'
@@ -153,20 +157,17 @@ expression returns [Exp expressao]:
           | e1=expression '.' 'length'
                 {$expressao = new ArrayLength($e1.expressao);}
 
-          | e1=expression '.' id=identifier '(' ( e2=expression ( ',' e3=expression )* )? ')'
-                {ExpList expList = new ExpList();
+          | e1=expression '.' id=identifier {ExpList expList = new ExpList();}
+                                                  '(' ( e2=expression {if ($e2.ctx != null) {
+                                                                    expList.addElement(((ExpressionContext)_localctx).e2.expressao);
+                                                                 }}
+                                                                 ( ',' e3=expression {if ($e3.ctx != null) {
+                                                                                        expList.addElement(((ExpressionContext)_localctx).e3.expressao);
+                                                                                      }}
+                                                                 )*
+                                                  )? ')'
 
-                if ($e2.ctx != null) {
-                    expList.addElement(((ExpressionContext)_localctx).e2.expressao);
-
-                    if ($e3.ctx != null) {
-                        expList.addElement(((ExpressionContext)_localctx).e3.expressao);
-                    }
-                }
-
-
-                 Identifier idtf = new Identifier($id.ctx.getText());
-
+                {Identifier idtf = new Identifier($id.ctx.getText());
                  $expressao = new Call($e1.expressao, idtf, expList);}
 
           | integer=INTEGER_LITERAL
@@ -206,5 +207,7 @@ identifier: IDENTIFIER;
 // Missing lexer rules
 
 INTEGER_LITERAL:    [0-9]+;
-IDENTIFIER:         [a-zA-Z]+;
+IDENTIFIER:         [a-zA-Z_0-9]+;
 WS:                 [ \r\n\t]+ ->skip;
+BLOCKCOMMENT:       '/*' .*? '*/' -> skip;
+LINECOMMENT:        '//' ~[\r\n]* -> skip;
