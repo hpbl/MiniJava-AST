@@ -4,6 +4,21 @@ grammar gram;
 import ast.*;
 }
 
+type returns [Type tipo]:
+            'int' '[' ']'
+                {$tipo = new IntArrayType();}
+
+    |       'boolean'
+                {$tipo = new BooleanType();}
+
+    |       'int'
+                {$tipo = new IntegerType();}
+
+    |       id=identifier
+                {$tipo = new IdentifierType($id.ctx.getText());}
+    ;
+
+
 statement returns [Statement declaracao]:
             '{' ( stmt=statement )* '}'
                 {StatementList list = new StatementList();
@@ -27,6 +42,7 @@ statement returns [Statement declaracao]:
                 {Identifier idtf = new Identifier($id.ctx.getText());
                 $declaracao = new ArrayAssign(idtf, $e1.expressao, $e2.expressao);}
          ;
+
 
 expression returns [Exp expressao]:
             e1=expression op=( '&&' | '<' | '+' | '-' | '*' ) e2=expression
