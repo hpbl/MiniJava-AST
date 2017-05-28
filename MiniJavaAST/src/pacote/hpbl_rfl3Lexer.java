@@ -1,4 +1,4 @@
-// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/partialAST/src/pacote/gram.g4 by ANTLR 4.7
+// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/MiniJavaAST/src/pacote/hpbl_rfl3.g4 by ANTLR 4.7
 package pacote;
 
 import ast.*;
@@ -13,7 +13,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class gramLexer extends Lexer {
+public class hpbl_rfl3Lexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -90,13 +90,13 @@ public class gramLexer extends Lexer {
 	}
 
 
-	public gramLexer(CharStream input) {
+	public hpbl_rfl3Lexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "gram.g4"; }
+	public String getGrammarFileName() { return "hpbl_rfl3.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

@@ -1,4 +1,4 @@
-grammar gram;
+grammar hpbl_rfl3;
 
 @header {
 import ast.*;

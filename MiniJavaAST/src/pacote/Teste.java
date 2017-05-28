@@ -19,9 +19,9 @@ public class Teste {
 
         InputStream stream = new FileInputStream("Test.txt");
         ANTLRInputStream input = new ANTLRInputStream(stream);
-        gramLexer lexer = new gramLexer(input);
+        hpbl_rfl3Lexer lexer = new hpbl_rfl3Lexer(input);
         CommonTokenStream token = new CommonTokenStream(lexer);
-        gramParser parser = new gramParser(token);
+        hpbl_rfl3Parser parser = new hpbl_rfl3Parser(token);
 
         Program prog = parser.goal().programa;
 

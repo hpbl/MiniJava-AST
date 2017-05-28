@@ -1,4 +1,4 @@
-// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/partialAST/src/pacote/gram.g4 by ANTLR 4.7
+// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/MiniJavaAST/src/pacote/hpbl_rfl3.g4 by ANTLR 4.7
 package pacote;
 
 import ast.*;
@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class gramParser extends Parser {
+public class hpbl_rfl3Parser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -82,7 +82,7 @@ public class gramParser extends Parser {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "gram.g4"; }
+	public String getGrammarFileName() { return "hpbl_rfl3.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -93,7 +93,7 @@ public class gramParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public gramParser(TokenStream input) {
+	public hpbl_rfl3Parser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -101,7 +101,7 @@ public class gramParser extends Parser {
 		public Program programa;
 		public MainClassContext mc1;
 		public ClassDeclarationContext cd1;
-		public TerminalNode EOF() { return getToken(gramParser.EOF, 0); }
+		public TerminalNode EOF() { return getToken(hpbl_rfl3Parser.EOF, 0); }
 		public MainClassContext mainClass() {
 			return getRuleContext(MainClassContext.class,0);
 		}
@@ -117,15 +117,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_goal; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterGoal(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterGoal(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitGoal(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitGoal(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitGoal(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitGoal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -194,15 +194,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_mainClass; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterMainClass(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterMainClass(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitMainClass(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitMainClass(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitMainClass(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitMainClass(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -295,15 +295,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_classDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterClassDeclaration(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterClassDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitClassDeclaration(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitClassDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitClassDeclaration(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitClassDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -416,15 +416,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_varDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterVarDeclaration(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterVarDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitVarDeclaration(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitVarDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitVarDeclaration(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitVarDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -500,15 +500,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_methodDeclaration; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterMethodDeclaration(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterMethodDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitMethodDeclaration(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitMethodDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitMethodDeclaration(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitMethodDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -653,15 +653,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterType(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitType(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitType(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitType(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -753,15 +753,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterStatement(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitStatement(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -910,7 +910,7 @@ public class gramParser extends Parser {
 		public Token op;
 		public ExpressionContext e2;
 		public ExpressionContext e3;
-		public TerminalNode INTEGER_LITERAL() { return getToken(gramParser.INTEGER_LITERAL, 0); }
+		public TerminalNode INTEGER_LITERAL() { return getToken(hpbl_rfl3Parser.INTEGER_LITERAL, 0); }
 		public IdentifierContext identifier() {
 			return getRuleContext(IdentifierContext.class,0);
 		}
@@ -926,15 +926,15 @@ public class gramParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterExpression(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitExpression(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitExpression(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1202,22 +1202,22 @@ public class gramParser extends Parser {
 	}
 
 	public static class IdentifierContext extends ParserRuleContext {
-		public TerminalNode IDENTIFIER() { return getToken(gramParser.IDENTIFIER, 0); }
+		public TerminalNode IDENTIFIER() { return getToken(hpbl_rfl3Parser.IDENTIFIER, 0); }
 		public IdentifierContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_identifier; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).enterIdentifier(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).enterIdentifier(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof gramListener ) ((gramListener)listener).exitIdentifier(this);
+			if ( listener instanceof hpbl_rfl3Listener ) ((hpbl_rfl3Listener)listener).exitIdentifier(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof gramVisitor ) return ((gramVisitor<? extends T>)visitor).visitIdentifier(this);
+			if ( visitor instanceof hpbl_rfl3Visitor ) return ((hpbl_rfl3Visitor<? extends T>)visitor).visitIdentifier(this);
 			else return visitor.visitChildren(this);
 		}
 	}
