@@ -4,10 +4,50 @@ grammar gram;
 import ast.*;
 }
 
+statement returns [Statement declaracao]:
+            '{' ( stmt=statement )* '}'
+                {StatementList list = new StatementList();
+                list.addElement($stmt.declaracao);
+                $declaracao = new Block(list);}
+
+         |  'if' '(' exp=expression ')' s1=statement 'else' s2=statement
+                {$declaracao = new If($exp.expressao, $s1.declaracao, $s2.declaracao);}
+
+         |  'while' '(' exp=expression ')' blck=statement
+                {$declaracao = new While($exp.expressao, $blck.declaracao);}
+
+         |  'System.out.println' '(' exp=expression ')' ';'
+                {$declaracao = new Print($exp.expressao);}
+
+         |  id=identifier '=' exp=expression ';'
+                {Identifier idtf = new Identifier($id.ctx.getText());
+                $declaracao = new Assign(idtf, $exp.expressao);}
+
+         |  id=identifier '[' e1=expression ']' '=' e2=expression ';'
+                {Identifier idtf = new Identifier($id.ctx.getText());
+                $declaracao = new ArrayAssign(idtf, $e1.expressao, $e2.expressao);}
+         ;
 
 expression returns [Exp expressao]:
-            e1=expression op='+' e2=expression
-                {$expressao = new Plus($e1.expressao, $e2.expressao);}
+            e1=expression op=( '&&' | '<' | '+' | '-' | '*' ) e2=expression
+                {switch ($op.getText()) {
+                    case "&&":  $expressao = new And($e1.expressao, $e2.expressao);
+                                break;
+
+                    case "<":   $expressao = new LessThan($e1.expressao, $e2.expressao);
+                                break;
+
+                    case "+":   $expressao = new Plus($e1.expressao, $e2.expressao);
+                                break;
+
+                    case "-":   $expressao = new Minus($e1.expressao, $e2.expressao);
+                                break;
+
+                    case "*":   $expressao = new Times($e1.expressao, $e2.expressao);
+                                break;
+                }
+
+                }
 
           | e1=expression '[' e2=expression ']'
                 {$expressao = new ArrayLookup($e1.expressao, $e2.expressao);}

@@ -1,4 +1,4 @@
-// Generated from /Users/Pintor/Downloads/asd/src/pacote/gram.g4 by ANTLR 4.7
+// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/partialAST/src/pacote/gram.g4 by ANTLR 4.7
 package pacote;
 
 import ast.*;
@@ -13,6 +13,12 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * operations with no return type.
  */
 public interface gramVisitor<T> extends ParseTreeVisitor<T> {
+	/**
+	 * Visit a parse tree produced by {@link gramParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStatement(gramParser.StatementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link gramParser#expression}.
 	 * @param ctx the parse tree

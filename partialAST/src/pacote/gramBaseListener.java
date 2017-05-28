@@ -1,4 +1,4 @@
-// Generated from /Users/Pintor/Downloads/asd/src/pacote/gram.g4 by ANTLR 4.7
+// Generated from /Users/Pintor/Documents/CIn/7/Compiladores/MiniJava-AST/partialAST/src/pacote/gram.g4 by ANTLR 4.7
 package pacote;
 
 import ast.*;
@@ -14,6 +14,18 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class gramBaseListener implements gramListener {
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatement(gramParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatement(gramParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

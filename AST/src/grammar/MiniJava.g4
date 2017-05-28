@@ -33,7 +33,7 @@ type:       'int' '[' ']'
 statement returns [Statement stmt]:
          '{' ( statement )* '}'
          |  'if' '(' expression ')' statement 'else' statement
-         |  'while' '(' exp=expression ')' blck=statement                {$stmt = new While($exp, $blck)}
+         |  'while' '(' exp=expression ')' blck=statement
          |  'System.out.println' '(' expression ')' ';'
          |  identifier '=' expression ';'
          |  identifier '[' expression ']' '=' expression ';'
