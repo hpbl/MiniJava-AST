@@ -11,6 +11,56 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface gramListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link gramParser#goal}.
+	 * @param ctx the parse tree
+	 */
+	void enterGoal(gramParser.GoalContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gramParser#goal}.
+	 * @param ctx the parse tree
+	 */
+	void exitGoal(gramParser.GoalContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gramParser#mainClass}.
+	 * @param ctx the parse tree
+	 */
+	void enterMainClass(gramParser.MainClassContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gramParser#mainClass}.
+	 * @param ctx the parse tree
+	 */
+	void exitMainClass(gramParser.MainClassContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gramParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassDeclaration(gramParser.ClassDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gramParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassDeclaration(gramParser.ClassDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gramParser#varDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterVarDeclaration(gramParser.VarDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gramParser#varDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitVarDeclaration(gramParser.VarDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link gramParser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodDeclaration(gramParser.MethodDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link gramParser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodDeclaration(gramParser.MethodDeclarationContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link gramParser#type}.
 	 * @param ctx the parse tree
 	 */

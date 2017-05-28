@@ -14,6 +14,36 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface gramVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link gramParser#goal}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGoal(gramParser.GoalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramParser#mainClass}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMainClass(gramParser.MainClassContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramParser#classDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassDeclaration(gramParser.ClassDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramParser#varDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVarDeclaration(gramParser.VarDeclarationContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link gramParser#methodDeclaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMethodDeclaration(gramParser.MethodDeclarationContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link gramParser#type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
