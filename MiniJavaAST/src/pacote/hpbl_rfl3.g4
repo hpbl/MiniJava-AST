@@ -195,7 +195,7 @@ expression returns [Exp expressao]:
                 {$expressao = new Not($exp.expressao);}
 
           | '(' exp=expression ')'
-                {/* descobrir o que é isso */
+                {/* descobrir se é assim */
                 $expressao = $exp.expressao;
                 }
           ;

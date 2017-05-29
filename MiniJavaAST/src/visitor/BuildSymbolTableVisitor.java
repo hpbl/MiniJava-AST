@@ -1,43 +1,10 @@
 package visitor;
 
+import ast.*;
 import symboltable.SymbolTable;
-import symboltable.Method;
 import symboltable.Class;
+import symboltable.Method;
 import symboltable.Variable;
-import ast.And;
-import ast.ArrayAssign;
-import ast.ArrayLength;
-import ast.ArrayLookup;
-import ast.Assign;
-import ast.Block;
-import ast.BooleanType;
-import ast.Call;
-import ast.ClassDeclExtends;
-import ast.ClassDeclSimple;
-import ast.False;
-import ast.Formal;
-import ast.Identifier;
-import ast.IdentifierExp;
-import ast.IdentifierType;
-import ast.If;
-import ast.IntArrayType;
-import ast.IntegerLiteral;
-import ast.IntegerType;
-import ast.LessThan;
-import ast.MainClass;
-import ast.MethodDecl;
-import ast.Minus;
-import ast.NewArray;
-import ast.NewObject;
-import ast.Not;
-import ast.Plus;
-import ast.Print;
-import ast.Program;
-import ast.This;
-import ast.Times;
-import ast.True;
-import ast.VarDecl;
-import ast.While;
 
 public class BuildSymbolTableVisitor implements Visitor {
 
@@ -59,13 +26,20 @@ public class BuildSymbolTableVisitor implements Visitor {
 	public void visit(Program n) {
 		n.m.accept(this);
 		for (int i = 0; i < n.cl.size(); i++) {
+
 			n.cl.elementAt(i).accept(this);
+
 		}
 	}
 
 	// Identifier i1,i2;
 	// Statement s;
 	public void visit(MainClass n) {
+
+		String identificador = n.i1.toString();
+
+		this.symbolTable.addClass(identificador, "quem é o pai?");
+
 		n.i1.accept(this);
 		n.i2.accept(this);
 		n.s.accept(this);
@@ -75,12 +49,26 @@ public class BuildSymbolTableVisitor implements Visitor {
 	// VarDeclList vl;
 	// MethodDeclList ml;
 	public void visit(ClassDeclSimple n) {
-		n.i.accept(this);
-		for (int i = 0; i < n.vl.size(); i++) {
-			n.vl.elementAt(i).accept(this);
-		}
-		for (int i = 0; i < n.ml.size(); i++) {
-			n.ml.elementAt(i).accept(this);
+		String identificador = n.i.toString();
+
+		if (this.currClass == null) {
+
+			if (this.symbolTable.getClass(identificador) == null) {
+				this.currClass = new Class(identificador, "quem é o pai?");
+
+				if (this.symbolTable.addClass(identificador, "quem é o pai?")) {
+					n.i.accept(this);
+					for (int i = 0; i < n.vl.size(); i++) {
+						n.vl.elementAt(i).accept(this);
+					}
+					for (int i = 0; i < n.ml.size(); i++) {
+						n.ml.elementAt(i).accept(this);
+					}
+				}
+			} else {
+				// classe duplicada
+			}
+			this.currClass = null;
 		}
 	}
 
@@ -89,19 +77,45 @@ public class BuildSymbolTableVisitor implements Visitor {
 	// VarDeclList vl;
 	// MethodDeclList ml;
 	public void visit(ClassDeclExtends n) {
-		n.i.accept(this);
-		n.j.accept(this);
-		for (int i = 0; i < n.vl.size(); i++) {
-			n.vl.elementAt(i).accept(this);
-		}
-		for (int i = 0; i < n.ml.size(); i++) {
-			n.ml.elementAt(i).accept(this);
+		String identificador = n.i.toString();
+
+		if (this.currClass == null) {
+
+			if (this.symbolTable.getClass(identificador) == null) {
+				this.currClass = new Class(identificador, "quem é o pai?");
+
+				if (this.symbolTable.addClass(identificador, "quem é?")) {
+					n.i.accept(this);
+					n.j.accept(this);
+					for (int i = 0; i < n.vl.size(); i++) {
+						n.vl.elementAt(i).accept(this);
+					}
+					for (int i = 0; i < n.ml.size(); i++) {
+						n.ml.elementAt(i).accept(this);
+					}
+				}
+			} else {
+				// classe duplicada
+			}
+			this.currClass = null;
 		}
 	}
 
 	// Type t;
 	// Identifier i;
 	public void visit(VarDecl n) {
+
+		Type tipo = n.t;
+		String identificador = n.i.toString();
+
+		if (this.currMethod == null) {
+			if (!this.currClass.addVar(identificador, tipo)) {
+				// variável já foi definida na classe (erro)
+			}
+		} else if (!this.currMethod.addVar(identificador, tipo)) {
+			// variável já foi definida no método (erro)
+		}
+
 		n.t.accept(this);
 		n.i.accept(this);
 	}
@@ -113,23 +127,43 @@ public class BuildSymbolTableVisitor implements Visitor {
 	// StatementList sl;
 	// Exp e;
 	public void visit(MethodDecl n) {
-		n.t.accept(this);
-		n.i.accept(this);
-		for (int i = 0; i < n.fl.size(); i++) {
-			n.fl.elementAt(i).accept(this);
+
+		String identificador = n.i.toString();
+		this.currMethod = this.currClass.getMethod(identificador);
+
+		if (this.currMethod == null) {
+			this.currMethod = new Method(identificador, n.t);
+
+			this.currClass.addMethod(identificador, n.t);
+
+			n.t.accept(this);
+			n.i.accept(this);
+			for (int i = 0; i < n.fl.size(); i++) {
+				n.fl.elementAt(i).accept(this);
+			}
+			for (int i = 0; i < n.vl.size(); i++) {
+				n.vl.elementAt(i).accept(this);
+			}
+			for (int i = 0; i < n.sl.size(); i++) {
+				n.sl.elementAt(i).accept(this);
+			}
+			n.e.accept(this);
+
+		} else {
+			// o método já foi definido na classe (erro)
 		}
-		for (int i = 0; i < n.vl.size(); i++) {
-			n.vl.elementAt(i).accept(this);
-		}
-		for (int i = 0; i < n.sl.size(); i++) {
-			n.sl.elementAt(i).accept(this);
-		}
-		n.e.accept(this);
+
+		this.currMethod = null;
 	}
 
 	// Type t;
 	// Identifier i;
 	public void visit(Formal n) {
+
+		if (!this.currMethod.addParam(n.i.toString(), n.t)) {
+			//o parametro já existe no método
+		}
+
 		n.t.accept(this);
 		n.i.accept(this);
 	}
