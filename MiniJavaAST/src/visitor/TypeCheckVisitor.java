@@ -202,37 +202,83 @@ public class TypeCheckVisitor implements TypeVisitor {
 
 	// Exp e1,e2;
 	public Type visit(And n) {
-		n.e1.accept(this);
-		n.e2.accept(this);
-		return null;
+
+		Type t1 = n.e1.accept(this);
+		Type t2 = n.e2.accept(this);
+
+		if (!(t1 instanceof BooleanType)) {
+			//primeiro elemento não é Boolean (Erro)
+			return null;
+		}
+		if (!(t2 instanceof BooleanType)) {
+			//segundo elemento não é Boolean (Erro)
+			return null;
+		}
+		return new BooleanType();
 	}
 
 	// Exp e1,e2;
 	public Type visit(LessThan n) {
-		n.e1.accept(this);
-		n.e2.accept(this);
-		return null;
+		Type t1 = n.e1.accept(this);
+		Type t2 = n.e2.accept(this);
+
+		if (!(t1 instanceof IntegerType)) {
+			//primeiro elemento não é inteiro (Erro)
+			return null;
+		}
+		if (!(t2 instanceof IntegerType)) {
+			//segundo elemento não é inteiro (Erro)
+			return null;
+		}
+		return new IntegerType();
 	}
 
 	// Exp e1,e2;
 	public Type visit(Plus n) {
-		n.e1.accept(this);
-		n.e2.accept(this);
-		return null;
+		Type t1 = n.e1.accept(this);
+		Type t2 = n.e2.accept(this);
+
+		if (!(t1 instanceof IntegerType)) {
+			//primeiro elemento não é inteiro (Erro)
+			return null;
+		}
+		if (!(t2 instanceof IntegerType)) {
+			//segundo elemento não é inteiro (Erro)
+			return null;
+		}
+		return new IntegerType();
 	}
 
 	// Exp e1,e2;
 	public Type visit(Minus n) {
-		n.e1.accept(this);
-		n.e2.accept(this);
-		return null;
+		Type t1 = n.e1.accept(this);
+		Type t2 = n.e2.accept(this);
+
+		if (!(t1 instanceof IntegerType)) {
+			//primeiro elemento não é inteiro (Erro)
+			return null;
+		}
+		if (!(t2 instanceof IntegerType)) {
+			//segundo elemento não é inteiro (Erro)
+			return null;
+		}
+		return new IntegerType();
 	}
 
 	// Exp e1,e2;
 	public Type visit(Times n) {
-		n.e1.accept(this);
-		n.e2.accept(this);
-		return null;
+		Type t1 = n.e1.accept(this);
+		Type t2 = n.e2.accept(this);
+
+		if (!(t1 instanceof IntegerType)) {
+			//primeiro elemento não é inteiro (Erro)
+			return null;
+		}
+		if (!(t2 instanceof IntegerType)) {
+			//segundo elemento não é inteiro (Erro)
+			return null;
+		}
+		return new IntegerType();
 	}
 
 	// Exp e1,e2;
@@ -262,15 +308,15 @@ public class TypeCheckVisitor implements TypeVisitor {
 
 	// int i;
 	public Type visit(IntegerLiteral n) {
-		return null;
+		return new IntegerType();
 	}
 
 	public Type visit(True n) {
-		return null;
+		return new BooleanType();
 	}
 
 	public Type visit(False n) {
-		return null;
+		return new BooleanType();
 	}
 
 	// String s;
@@ -284,19 +330,39 @@ public class TypeCheckVisitor implements TypeVisitor {
 
 	// Exp e;
 	public Type visit(NewArray n) {
-		n.e.accept(this);
-		return null;
+		Type tipo = n.e.accept(this);
+
+		if (!(tipo instanceof IntegerType)) {
+			//o index não é inteiro (erro)
+			return null;
+		}
+
+		return new IntArrayType();
 	}
 
 	// Identifier i;
 	public Type visit(NewObject n) {
-		return null;
+
+		String identificador = n.i.toString();
+
+		if (this.symbolTable.getClass(identificador) == null) {
+			//tipo não definido (erro)
+			return null;
+		}
+
+		return new IdentifierType(identificador);
 	}
 
 	// Exp e;
 	public Type visit(Not n) {
-		n.e.accept(this);
-		return null;
+		Type tipo = n.e.accept(this);
+
+		if (!(tipo instanceof  BooleanType)) {
+			//elemento não é Boolean (Erro)
+			return  null;
+		}
+
+		return new BooleanType();
 	}
 
 	// String s;

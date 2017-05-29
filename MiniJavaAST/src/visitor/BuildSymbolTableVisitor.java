@@ -38,7 +38,13 @@ public class BuildSymbolTableVisitor implements Visitor {
 
 		String identificador = n.i1.toString();
 
-		this.symbolTable.addClass(identificador, "quem é o pai?");
+		if (this.symbolTable.addClass(identificador, null)) {
+			this.currClass = this.symbolTable.getClass(identificador);
+
+		} else {
+			//Erro
+			System.out.println("MainClass " + identificador + "já foi definida anteriormente");
+		}
 
 		n.i1.accept(this);
 		n.i2.accept(this);
@@ -51,24 +57,19 @@ public class BuildSymbolTableVisitor implements Visitor {
 	public void visit(ClassDeclSimple n) {
 		String identificador = n.i.toString();
 
-		if (this.currClass == null) {
+		if (this.symbolTable.addClass(identificador, null)) {
+			this.currClass = this.symbolTable.getClass(identificador);
+		} else {
+			//Erro
+			System.out.println("Classe " + identificador + "já foi definida anteriormente");
+		}
 
-			if (this.symbolTable.getClass(identificador) == null) {
-				this.currClass = new Class(identificador, "quem é o pai?");
-
-				if (this.symbolTable.addClass(identificador, "quem é o pai?")) {
-					n.i.accept(this);
-					for (int i = 0; i < n.vl.size(); i++) {
-						n.vl.elementAt(i).accept(this);
-					}
-					for (int i = 0; i < n.ml.size(); i++) {
-						n.ml.elementAt(i).accept(this);
-					}
-				}
-			} else {
-				// classe duplicada
-			}
-			this.currClass = null;
+		n.i.accept(this);
+		for (int i = 0; i < n.vl.size(); i++) {
+			n.vl.elementAt(i).accept(this);
+		}
+		for (int i = 0; i < n.ml.size(); i++) {
+			n.ml.elementAt(i).accept(this);
 		}
 	}
 
@@ -78,42 +79,43 @@ public class BuildSymbolTableVisitor implements Visitor {
 	// MethodDeclList ml;
 	public void visit(ClassDeclExtends n) {
 		String identificador = n.i.toString();
+		String pai = n.j.toString();
 
-		if (this.currClass == null) {
+		if (this.symbolTable.addClass(identificador, pai)) {
+			this.currClass = this.symbolTable.getClass(identificador);
 
-			if (this.symbolTable.getClass(identificador) == null) {
-				this.currClass = new Class(identificador, "quem é o pai?");
+		} else {
+			//Erro
+			System.out.println("Classe " + identificador + "já foi definida anteriormente");
+		}
 
-				if (this.symbolTable.addClass(identificador, "quem é?")) {
-					n.i.accept(this);
-					n.j.accept(this);
-					for (int i = 0; i < n.vl.size(); i++) {
-						n.vl.elementAt(i).accept(this);
-					}
-					for (int i = 0; i < n.ml.size(); i++) {
-						n.ml.elementAt(i).accept(this);
-					}
-				}
-			} else {
-				// classe duplicada
-			}
-			this.currClass = null;
+		n.i.accept(this);
+		n.j.accept(this);
+		for (int i = 0; i < n.vl.size(); i++) {
+			n.vl.elementAt(i).accept(this);
+		}
+		for (int i = 0; i < n.ml.size(); i++) {
+			n.ml.elementAt(i).accept(this);
 		}
 	}
 
 	// Type t;
 	// Identifier i;
 	public void visit(VarDecl n) {
+		Type varType = n.t;
+		String varIdentifier  = n.i.toString();
 
-		Type tipo = n.t;
-		String identificador = n.i.toString();
+		Class classePertencente = this.symbolTable.getClass(this.currClass.getId());
 
 		if (this.currMethod == null) {
-			if (!this.currClass.addVar(identificador, tipo)) {
-				// variável já foi definida na classe (erro)
+			if (!(classePertencente.addVar(varIdentifier, varType))) {
+				//Erro
+				System.out.println("Variável " + varIdentifier + " já declarada na classe atual " + classePertencente.getId());
 			}
-		} else if (!this.currMethod.addVar(identificador, tipo)) {
-			// variável já foi definida no método (erro)
+		} else {
+			if (!(this.currMethod.addVar(varIdentifier, varType))) {
+				System.out.println("Variável " + varIdentifier + " já declarada no método atual " + this.currMethod.getId());
+			}
 		}
 
 		n.t.accept(this);
@@ -127,41 +129,44 @@ public class BuildSymbolTableVisitor implements Visitor {
 	// StatementList sl;
 	// Exp e;
 	public void visit(MethodDecl n) {
-
 		String identificador = n.i.toString();
-		this.currMethod = this.currClass.getMethod(identificador);
 
-		if (this.currMethod == null) {
-			this.currMethod = new Method(identificador, n.t);
+		Class methodClass = this.symbolTable.getClass(this.currClass.getId());
 
-			this.currClass.addMethod(identificador, n.t);
-
-			n.t.accept(this);
-			n.i.accept(this);
-			for (int i = 0; i < n.fl.size(); i++) {
-				n.fl.elementAt(i).accept(this);
-			}
-			for (int i = 0; i < n.vl.size(); i++) {
-				n.vl.elementAt(i).accept(this);
-			}
-			for (int i = 0; i < n.sl.size(); i++) {
-				n.sl.elementAt(i).accept(this);
-			}
-			n.e.accept(this);
+		if (methodClass.addMethod(identificador, n.t)) {
+			this.currMethod = methodClass.getMethod(identificador);
 
 		} else {
-			// o método já foi definido na classe (erro)
+			//Erro
+			System.out.println("Método " + identificador + " já foi definido na classe " + methodClass.getId());
 		}
 
+		n.t.accept(this);
+		n.i.accept(this);
+		for (int i = 0; i < n.fl.size(); i++) {
+			n.fl.elementAt(i).accept(this);
+		}
+		for (int i = 0; i < n.vl.size(); i++) {
+			n.vl.elementAt(i).accept(this);
+		}
+		for (int i = 0; i < n.sl.size(); i++) {
+			n.sl.elementAt(i).accept(this);
+		}
+		n.e.accept(this);
+
+		//colocando currMethod como null ao fim do escopo do método visitado
 		this.currMethod = null;
 	}
 
 	// Type t;
 	// Identifier i;
 	public void visit(Formal n) {
+		String paramIdentifier = n.i.toString();
+		Type paramType = n.t;
 
-		if (!this.currMethod.addParam(n.i.toString(), n.t)) {
-			//o parametro já existe no método
+		if (!(this.currMethod.addParam(paramIdentifier, paramType))) {
+			//Erro
+			System.out.println("Parâmetro " + paramIdentifier + " duplicado na função " + this.currMethod.getId());
 		}
 
 		n.t.accept(this);

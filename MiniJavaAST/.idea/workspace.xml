@@ -19,8 +19,8 @@
       <file leaf-file-name="hpbl_rfl3.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pacote/hpbl_rfl3.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="197" column="40" lean-forward="false" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
+            <state relative-caret-position="226">
+              <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="19" />
               <folding>
                 <element signature="e#20#45#1" expanded="true" />
               </folding>
@@ -31,25 +31,30 @@
       <file leaf-file-name="BuildSymbolTableVisitor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/visitor/BuildSymbolTableVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-227">
-              <caret line="78" column="42" lean-forward="false" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+            <state relative-caret-position="118">
+              <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#visit#0;class#BuildSymbolTableVisitor#0" expanded="false" />
                 <element signature="method#visit#1;class#BuildSymbolTableVisitor#0" expanded="false" />
                 <element signature="method#visit#2;class#BuildSymbolTableVisitor#0" expanded="false" />
                 <element signature="method#visit#3;class#BuildSymbolTableVisitor#0" expanded="false" />
                 <element signature="method#visit#4;class#BuildSymbolTableVisitor#0" expanded="false" />
-                <element signature="e#4189#4190#0" expanded="true" />
-                <element signature="e#4212#4213#0" expanded="true" />
-                <element signature="e#5051#5052#0" expanded="true" />
-                <element signature="e#5074#5075#0" expanded="true" />
-                <element signature="e#5528#5529#0" expanded="true" />
-                <element signature="e#5551#5552#0" expanded="true" />
-                <element signature="e#5647#5648#0" expanded="true" />
-                <element signature="e#5670#5671#0" expanded="true" />
-                <marker date="1496020482000" expanded="false" signature="2751:3402" ph="{...}" />
-                <marker date="1496020482000" expanded="false" signature="3463:3606" ph="{...}" />
+                <element signature="method#visit#5;class#BuildSymbolTableVisitor#0" expanded="false" />
+                <element signature="method#visit#6;class#BuildSymbolTableVisitor#0" expanded="false" />
+                <element signature="e#5580#5581#0" expanded="true" />
+                <element signature="e#5603#5604#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ast/MainClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,31 +62,8 @@
       <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/symboltable/SymbolTable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Method.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/symboltable/Method.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="59" column="7" lean-forward="false" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
-              <folding>
-                <element signature="e#1046#1047#0" expanded="true" />
-                <element signature="e#1080#1081#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Type.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/Type.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="-1456">
+              <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -90,39 +72,80 @@
       <file leaf-file-name="Class.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/symboltable/Class.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+            <state relative-caret-position="543">
+              <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+              <folding>
+                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#1341#1342#0" expanded="true" />
+                <element signature="e#1378#1379#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Hashtable.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/src.zip!/java/util/Hashtable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="332" column="32" lean-forward="false" selection-start-line="332" selection-start-column="32" selection-end-line="332" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassDecl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/ClassDecl.java">
+      <file leaf-file-name="Method.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/symboltable/Method.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            <state relative-caret-position="169">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding>
+                <element signature="e#1046#1047#0" expanded="true" />
+                <element signature="e#1080#1081#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Variable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/symboltable/Variable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassDeclSimple.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclSimple.java">
+      <file leaf-file-name="TypeCheckVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/visitor/TypeCheckVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="76" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassDeclExtends.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclExtends.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="54" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="11" selection-end-column="54" />
-              <folding />
+            <state relative-caret-position="347">
+              <caret line="291" column="24" lean-forward="false" selection-start-line="291" selection-start-column="24" selection-end-line="291" selection-end-column="24" />
+              <folding>
+                <element signature="e#2739#2740#0" expanded="true" />
+                <element signature="e#2757#2758#0" expanded="true" />
+                <element signature="e#2794#2795#0" expanded="true" />
+                <element signature="e#2812#2813#0" expanded="true" />
+                <element signature="e#2849#2850#0" expanded="true" />
+                <element signature="e#2867#2868#0" expanded="true" />
+                <element signature="e#2921#2922#0" expanded="true" />
+                <element signature="e#2939#2940#0" expanded="true" />
+                <element signature="method#visit#17;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="method#visit#18;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="method#visit#19;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="method#visit#20;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="method#visit#21;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="e#6083#6084#0" expanded="true" />
+                <element signature="e#6101#6102#0" expanded="true" />
+                <element signature="e#6131#6132#0" expanded="true" />
+                <element signature="e#6149#6150#0" expanded="true" />
+                <element signature="method#visit#30;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="method#visit#31;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="method#visit#32;class#TypeCheckVisitor#0" expanded="false" />
+                <element signature="e#6858#6859#0" expanded="true" />
+                <element signature="e#6876#6877#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,13 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>valor</find>
-      <find>$exp</find>
-      <find>int</find>
-      <find>e2</find>
-      <find>plaus</find>
-      <find>plus</find>
-      <find>identifier</find>
       <find>new identifier(</find>
       <find>,</find>
       <find>linkedlis</find>
@@ -153,10 +169,8 @@
       <find>blck</find>
       <find>identi</find>
       <find>cdl</find>
-      <find>call</find>
       <find>classDec</find>
       <find>exp</find>
-      <find>formal</find>
       <find>methodde</find>
       <find>newA</find>
       <find>type</find>
@@ -167,7 +181,16 @@
       <find>ML1.ADD</find>
       <find>[</find>
       <find>classdecl</find>
+      <find>newar</find>
+      <find>not</find>
+      <find>array</find>
+      <find>call</find>
+      <find>SCOPE</find>
+      <find>arraylen</find>
+      <find>metho</find>
       <find>vardecl</find>
+      <find>formal</find>
+      <find>var</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -190,8 +213,8 @@
         <option value="$PROJECT_DIR$/Test.txt" />
         <option value="$PROJECT_DIR$/src/pacote/gram.g4" />
         <option value="$PROJECT_DIR$/src/pacote/Teste.java" />
-        <option value="$PROJECT_DIR$/src/visitor/TypeCheckVisitor.java" />
         <option value="$PROJECT_DIR$/src/pacote/hpbl_rfl3.g4" />
+        <option value="$PROJECT_DIR$/src/visitor/TypeCheckVisitor.java" />
         <option value="$PROJECT_DIR$/src/visitor/BuildSymbolTableVisitor.java" />
       </list>
     </option>
@@ -292,6 +315,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ast" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -568,7 +595,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -582,35 +609,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ast/And.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/LessThan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/Times.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacote/gramParser.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/ArrayAssign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacote/gramParser.java" />
     <entry file="file://$PROJECT_DIR$/src/ast/If.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -652,27 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/IntegerType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/IntArrayType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/IdentifierType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -732,21 +709,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacote/gramVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/ast/Program.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/Formal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -755,13 +718,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/Minus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ArrayLength.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
@@ -827,25 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/symboltable/Variable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#207#208#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclSimple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="76" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclExtends.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -862,24 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacote/hpbl_rfl3.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="197" column="40" lean-forward="false" selection-start-line="197" selection-start-column="40" selection-end-line="197" selection-end-column="40" />
-          <folding>
-            <element signature="e#20#45#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/visitor/TypeCheckVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="42" column="13" lean-forward="false" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacote/Teste.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -890,26 +809,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/symboltable/Class.java">
+    <entry file="file://$PROJECT_DIR$/src/ast/IntegerType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        <state relative-caret-position="51">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/IntArrayType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="e#201#202#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+          <folding>
+            <element signature="e#10065#10066#0" expanded="false" />
+            <element signature="e#10148#10149#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/Type.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="51">
+          <caret line="4" column="22" lean-forward="false" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symboltable/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/IdentifierType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/ArrayLength.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visitor/Visitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visitor/TypeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/visitor/TypeCheckVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="291" column="24" lean-forward="false" selection-start-line="291" selection-start-column="24" selection-end-line="291" selection-end-column="24" />
+          <folding>
+            <element signature="e#2739#2740#0" expanded="true" />
+            <element signature="e#2757#2758#0" expanded="true" />
+            <element signature="e#2794#2795#0" expanded="true" />
+            <element signature="e#2812#2813#0" expanded="true" />
+            <element signature="e#2849#2850#0" expanded="true" />
+            <element signature="e#2867#2868#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+            <element signature="e#2939#2940#0" expanded="true" />
+            <element signature="method#visit#17;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="method#visit#18;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="method#visit#19;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="method#visit#20;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="method#visit#21;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="e#6083#6084#0" expanded="true" />
+            <element signature="e#6101#6102#0" expanded="true" />
+            <element signature="e#6131#6132#0" expanded="true" />
+            <element signature="e#6149#6150#0" expanded="true" />
+            <element signature="method#visit#30;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="method#visit#31;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="method#visit#32;class#TypeCheckVisitor#0" expanded="false" />
+            <element signature="e#6858#6859#0" expanded="true" />
+            <element signature="e#6876#6877#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/symboltable/Method.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="59" column="7" lean-forward="false" selection-start-line="59" selection-start-column="7" selection-end-line="59" selection-end-column="7" />
+        <state relative-caret-position="169">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="e#1046#1047#0" expanded="true" />
             <element signature="e#1080#1081#0" expanded="true" />
@@ -917,34 +929,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/ClassDeclSimple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Program.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding>
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/src.zip!/java/util/Hashtable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="332" column="32" lean-forward="false" selection-start-line="332" selection-start-column="32" selection-end-line="332" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/symboltable/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="76" column="28" lean-forward="false" selection-start-line="76" selection-start-column="28" selection-end-line="76" selection-end-column="28" />
+          <folding>
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#1341#1342#0" expanded="true" />
+            <element signature="e#1378#1379#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/symboltable/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        <state relative-caret-position="-1456">
+          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacote/hpbl_rfl3.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="19" />
+          <folding>
+            <element signature="e#20#45#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/visitor/BuildSymbolTableVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-227">
-          <caret line="78" column="42" lean-forward="false" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+        <state relative-caret-position="118">
+          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#visit#0;class#BuildSymbolTableVisitor#0" expanded="false" />
             <element signature="method#visit#1;class#BuildSymbolTableVisitor#0" expanded="false" />
             <element signature="method#visit#2;class#BuildSymbolTableVisitor#0" expanded="false" />
             <element signature="method#visit#3;class#BuildSymbolTableVisitor#0" expanded="false" />
             <element signature="method#visit#4;class#BuildSymbolTableVisitor#0" expanded="false" />
-            <element signature="e#4189#4190#0" expanded="true" />
-            <element signature="e#4212#4213#0" expanded="true" />
-            <element signature="e#5051#5052#0" expanded="true" />
-            <element signature="e#5074#5075#0" expanded="true" />
-            <element signature="e#5528#5529#0" expanded="true" />
-            <element signature="e#5551#5552#0" expanded="true" />
-            <element signature="e#5647#5648#0" expanded="true" />
-            <element signature="e#5670#5671#0" expanded="true" />
-            <marker date="1496020482000" expanded="false" signature="2751:3402" ph="{...}" />
-            <marker date="1496020482000" expanded="false" signature="3463:3606" ph="{...}" />
+            <element signature="method#visit#5;class#BuildSymbolTableVisitor#0" expanded="false" />
+            <element signature="method#visit#6;class#BuildSymbolTableVisitor#0" expanded="false" />
+            <element signature="e#5580#5581#0" expanded="true" />
+            <element signature="e#5603#5604#0" expanded="true" />
           </folding>
         </state>
       </provider>
