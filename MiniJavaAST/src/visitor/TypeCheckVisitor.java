@@ -43,8 +43,10 @@ import symboltable.Variable;
 public class TypeCheckVisitor implements TypeVisitor {
 
 	private SymbolTable symbolTable;
+	private Class currClass;
+	private Method currMethod;
 
-	TypeCheckVisitor(SymbolTable st) {
+	public TypeCheckVisitor(SymbolTable st) {
 		symbolTable = st;
 	}
 
@@ -61,7 +63,9 @@ public class TypeCheckVisitor implements TypeVisitor {
 	// Identifier i1,i2;
 	// Statement s;
 	public Type visit(MainClass n) {
-		n.i1.accept(this);
+		String identificador = n.i1.toString();
+		this.currClass = symbolTable.getClass(identificador);
+
 		n.i2.accept(this);
 		n.s.accept(this);
 		return null;
@@ -71,7 +75,10 @@ public class TypeCheckVisitor implements TypeVisitor {
 	// VarDeclList vl;
 	// MethodDeclList ml;
 	public Type visit(ClassDeclSimple n) {
+		this.currClass = symbolTable.getClass(n.i.toString());
+
 		n.i.accept(this);
+
 		for (int i = 0; i < n.vl.size(); i++) {
 			n.vl.elementAt(i).accept(this);
 		}
@@ -86,6 +93,12 @@ public class TypeCheckVisitor implements TypeVisitor {
 	// VarDeclList vl;
 	// MethodDeclList ml;
 	public Type visit(ClassDeclExtends n) {
+		this.currClass = this.symbolTable.getClass(n.i.toString());
+
+		if (this.currClass.parent() != n.j.s) {
+			System.out.println("Extensão de classe errada");
+		}
+
 		n.i.accept(this);
 		n.j.accept(this);
 		for (int i = 0; i < n.vl.size(); i++) {
@@ -113,6 +126,11 @@ public class TypeCheckVisitor implements TypeVisitor {
 	// Exp e;
 	public Type visit(MethodDecl n) {
 		n.t.accept(this);
+
+		String identificador = n.i.toString();
+		this.currMethod = this.currClass.getMethod(identificador);
+		Type tipoMetodo = this.currMethod.type();
+
 		n.i.accept(this);
 		for (int i = 0; i < n.fl.size(); i++) {
 			n.fl.elementAt(i).accept(this);
@@ -123,7 +141,10 @@ public class TypeCheckVisitor implements TypeVisitor {
 		for (int i = 0; i < n.sl.size(); i++) {
 			n.sl.elementAt(i).accept(this);
 		}
-		n.e.accept(this);
+		if (!(this.symbolTable.compareTypes(n.e.accept(this), tipoMetodo))) {
+			//Erro
+			System.out.println("O retorno do método " + this.currMethod.getId() + " é do tipo errado");
+		}
 		return null;
 	}
 
@@ -136,20 +157,20 @@ public class TypeCheckVisitor implements TypeVisitor {
 	}
 
 	public Type visit(IntArrayType n) {
-		return null;
+		return new IntArrayType();
 	}
 
 	public Type visit(BooleanType n) {
-		return null;
+		return new BooleanType();
 	}
 
 	public Type visit(IntegerType n) {
-		return null;
+		return new IntegerType();
 	}
 
 	// String s;
 	public Type visit(IdentifierType n) {
-		return null;
+		return new IdentifierType(n.s);
 	}
 
 	// StatementList sl;
@@ -163,40 +184,74 @@ public class TypeCheckVisitor implements TypeVisitor {
 	// Exp e;
 	// Statement s1,s2;
 	public Type visit(If n) {
-		n.e.accept(this);
+		if (!(n.e.accept(this) instanceof BooleanType)) {
+			//Erro:
+			System.out.println("A condição do if deve ser do tipo Boolean");
+		}
+
 		n.s1.accept(this);
 		n.s2.accept(this);
-		return null;
+		return new BooleanType();
 	}
 
 	// Exp e;
 	// Statement s;
 	public Type visit(While n) {
-		n.e.accept(this);
+		if (!(n.e.accept(this) instanceof BooleanType)) {
+			//Erro:
+			System.out.print("A condição do while deve ser do tipo Boolean");
+		}
+
 		n.s.accept(this);
-		return null;
+		return new BooleanType();
 	}
 
 	// Exp e;
 	public Type visit(Print n) {
-		n.e.accept(this);
-		return null;
+		if (!(n.e.accept(this) instanceof IntegerType)) {
+			//Erro:
+			System.out.println("Prints devem imprimir inteiros");
+		}
+		return new IntegerType();
 	}
 
 	// Identifier i;
 	// Exp e;
 	public Type visit(Assign n) {
+		Type tipo1 = this.symbolTable.getVarType(this.currMethod, this.currClass, n.i.s);
+		Type tipo2 = n.e.accept(this);
+
+		if (!(this.symbolTable.compareTypes(tipo1, tipo2))) {
+			System.out.println("A variável e o valor atribuído são de tipos diferentes");
+		}
+
 		n.i.accept(this);
-		n.e.accept(this);
+
 		return null;
 	}
 
 	// Identifier i;
 	// Exp e1,e2;
 	public Type visit(ArrayAssign n) {
+		Type tipo = this.symbolTable.getVarType(this.currMethod, this.currClass, n.i.s);
+
+		if (!(tipo instanceof IntArrayType)) {
+			//Erro
+			System.out.print("O array deve ser de inteiros");
+		}
+
+		if (!(n.e1.accept(this) instanceof IntegerType)) {
+			//Erro
+			System.out.println("O indice do arrat deve ser um inteiro");
+		}
+
+		if (!(n.e2.accept(this) instanceof IntegerType)) {
+			//Erro
+			System.out.println("O array só armazena inteiros");
+		}
+
 		n.i.accept(this);
-		n.e1.accept(this);
-		n.e2.accept(this);
+
 		return null;
 	}
 
@@ -208,11 +263,11 @@ public class TypeCheckVisitor implements TypeVisitor {
 
 		if (!(t1 instanceof BooleanType)) {
 			//primeiro elemento não é Boolean (Erro)
-			return null;
+			System.out.println("o elemento da esquerda não é Boolean");
 		}
 		if (!(t2 instanceof BooleanType)) {
 			//segundo elemento não é Boolean (Erro)
-			return null;
+			System.out.println("o elemento da direita não é Boolean");
 		}
 		return new BooleanType();
 	}
@@ -224,11 +279,10 @@ public class TypeCheckVisitor implements TypeVisitor {
 
 		if (!(t1 instanceof IntegerType)) {
 			//primeiro elemento não é inteiro (Erro)
-			return null;
+			System.out.println("o elemento da esquerda não é inteiro");
 		}
 		if (!(t2 instanceof IntegerType)) {
-			//segundo elemento não é inteiro (Erro)
-			return null;
+			System.out.println("o elemento da direita não é inteiro");
 		}
 		return new IntegerType();
 	}
@@ -239,12 +293,12 @@ public class TypeCheckVisitor implements TypeVisitor {
 		Type t2 = n.e2.accept(this);
 
 		if (!(t1 instanceof IntegerType)) {
-			//primeiro elemento não é inteiro (Erro)
-			return null;
+			//Erro:
+			System.out.println("o elemento da esquerda não é inteiro");
 		}
 		if (!(t2 instanceof IntegerType)) {
-			//segundo elemento não é inteiro (Erro)
-			return null;
+			//Erro:
+			System.out.println("o elemento da direita não é inteiro");
 		}
 		return new IntegerType();
 	}
@@ -255,12 +309,12 @@ public class TypeCheckVisitor implements TypeVisitor {
 		Type t2 = n.e2.accept(this);
 
 		if (!(t1 instanceof IntegerType)) {
-			//primeiro elemento não é inteiro (Erro)
-			return null;
+			//Erro:
+			System.out.println("o elemento da esquerda não é inteiro");
 		}
 		if (!(t2 instanceof IntegerType)) {
-			//segundo elemento não é inteiro (Erro)
-			return null;
+			//Erro:
+			System.out.println("o elemento da direita não é inteiro");
 		}
 		return new IntegerType();
 	}
@@ -271,39 +325,79 @@ public class TypeCheckVisitor implements TypeVisitor {
 		Type t2 = n.e2.accept(this);
 
 		if (!(t1 instanceof IntegerType)) {
-			//primeiro elemento não é inteiro (Erro)
-			return null;
+			//Erro:
+			System.out.println("o elemento da esquerda não é inteiro");
 		}
 		if (!(t2 instanceof IntegerType)) {
-			//segundo elemento não é inteiro (Erro)
-			return null;
+			//Erro:
+			System.out.println("o elemento da direita não é inteiro");
 		}
 		return new IntegerType();
 	}
 
 	// Exp e1,e2;
 	public Type visit(ArrayLookup n) {
-		n.e1.accept(this);
-		n.e2.accept(this);
-		return null;
+		Type tipoArray = n.e1.accept(this);
+		Type tipoIndice = n.e2.accept(this);
+
+		if (!(tipoArray instanceof IntArrayType)) {
+			//Erro
+			System.out.println("array deve ser de inteiros");
+		}
+
+		if (!(tipoIndice instanceof IntegerType)) {
+			//Erro
+			System.out.println("Índice de array deve ser um inteiro");
+		}
+
+		return new IntegerType();
 	}
 
 	// Exp e;
 	public Type visit(ArrayLength n) {
-		n.e.accept(this);
-		return null;
+		Type tipo = n.e.accept(this);
+
+		if (!(tipo instanceof IntArrayType)) {
+			//Erro:
+			System.out.println("length deve ser usado num array de inteiros");
+		}
+
+		return new IntegerType();
 	}
 
 	// Exp e;
 	// Identifier i;
 	// ExpList el;
 	public Type visit(Call n) {
-		n.e.accept(this);
+		String idMetodo = n.i.s;
+		Type tipoObj = n.e.accept(this);
+
+		if (!(tipoObj instanceof IdentifierType)) {
+			//Erro:
+			System.out.println("Método " + idMetodo + " chamado por objeto que não o define");
+		}
+
+		String idObj = ((IdentifierType) tipoObj).s;
+
+		Method metodo = this.symbolTable.getMethod(idMetodo, idObj);
+
+
 		n.i.accept(this);
 		for (int i = 0; i < n.el.size(); i++) {
-			n.el.elementAt(i).accept(this);
+			Type t1 = null;
+			Type t2 = null;
+
+			if (metodo.getParamAt(i) != null) {
+				t1 = metodo.getParamAt(i).type();
+				t2 = n.el.elementAt(i).accept(this);
+			}
+			if (!(this.symbolTable.compareTypes(t1, t2))) {
+				//Erro:
+				System.out.println("Argumentos passados com tipo errado para " + idMetodo);
+			}
+
 		}
-		return null;
+		return metodo.type();
 	}
 
 	// int i;
@@ -321,11 +415,13 @@ public class TypeCheckVisitor implements TypeVisitor {
 
 	// String s;
 	public Type visit(IdentifierExp n) {
-		return null;
+		Type tipo = this.symbolTable.getVarType(this.currMethod, this.currClass, n.s);
+
+		return tipo;
 	}
 
 	public Type visit(This n) {
-		return null;
+		return this.currClass.type();
 	}
 
 	// Exp e;
@@ -333,8 +429,8 @@ public class TypeCheckVisitor implements TypeVisitor {
 		Type tipo = n.e.accept(this);
 
 		if (!(tipo instanceof IntegerType)) {
-			//o index não é inteiro (erro)
-			return null;
+			//Erro:
+			System.out.println("Arrays devem ser de inteiros");
 		}
 
 		return new IntArrayType();
@@ -343,14 +439,16 @@ public class TypeCheckVisitor implements TypeVisitor {
 	// Identifier i;
 	public Type visit(NewObject n) {
 
-		String identificador = n.i.toString();
+		/*String identificador = n.i.toString();
+		Class classe = this.symbolTable.getClass(identificador);
 
-		if (this.symbolTable.getClass(identificador) == null) {
-			//tipo não definido (erro)
-			return null;
-		}
+		if (classe == null) {
+			//Erro
+			System.out.println("Tipo não definido");
+		}*/
 
-		return new IdentifierType(identificador);
+		return new IdentifierType(n.i.s);
+		//return classe.type();
 	}
 
 	// Exp e;
@@ -358,8 +456,8 @@ public class TypeCheckVisitor implements TypeVisitor {
 		Type tipo = n.e.accept(this);
 
 		if (!(tipo instanceof  BooleanType)) {
-			//elemento não é Boolean (Erro)
-			return  null;
+			//Erro
+			System.out.println("O elemento não é um boolean");
 		}
 
 		return new BooleanType();

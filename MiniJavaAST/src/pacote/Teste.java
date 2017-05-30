@@ -10,6 +10,7 @@ import java.io.InputStream;
 import ast.*;
 import visitor.*;
 
+
 /**
  * Created by Pintor on 26/05/17.
  */
@@ -25,8 +26,13 @@ public class Teste {
 
         Program prog = parser.goal().programa;
 
-        prog.accept(new PrettyPrintVisitor());
+        //prog.accept(new PrettyPrintVisitor());
 
+        BuildSymbolTableVisitor stVis = new BuildSymbolTableVisitor();
+        //construindo tabela de símbolos
+        prog.accept(stVis);
+        //fazendo a checagem de tipos
+        prog.accept(new TypeCheckVisitor(stVis.getSymbolTable()));
     }
 
 }
